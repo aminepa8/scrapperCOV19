@@ -8,8 +8,9 @@ def ScrapyStages(Country ='morocco'):
     linkScrap = 'https://www.worldometers.info/coronavirus/country/'+ Country 
     r = session.get(linkScrap)
     CountryStatistics = r.html.find('.col-md-8 .content-inner .maincounter-number span')
-
-    print(Country)
+    LastUpdateTime = r.html.find('.col-md-8 .content-inner > div:nth-child(4)')
+    print(LastUpdateTime[0].text)
+    print('Country : '+Country)
     
     
     CoronavirusCases  =  CountryStatistics[0].text
@@ -21,4 +22,4 @@ def ScrapyStages(Country ='morocco'):
     print('Recovered: '+Recovered)
 
 
-ScrapyStages('us')
+ScrapyStages('morocco')
